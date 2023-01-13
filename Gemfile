@@ -17,6 +17,7 @@ group :development, :test do
   gem "rspec-rails", "~> 5.1", ">= 5.1.1"
   gem "shoulda-matchers", "~> 4.0"
   gem "rufo"
+  gem "simplecov", "~> 0.22.0"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
 
