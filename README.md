@@ -30,3 +30,8 @@ docker compose run --rm wallet-api bundle exec rails db:migrate
 ```
 docker compose run --rm wallet-api bundle exec rails db:drop
 ```
+
+- runs the tests
+```
+docker compose run --rm wallet-api bundle bundle exec rspec
+```
