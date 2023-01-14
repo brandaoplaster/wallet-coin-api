@@ -11,6 +11,8 @@ gem "bootsnap", ">= 1.4.4", require: false
 
 gem "rack-cors"
 
+gem "devise_token_auth", "~> 1.1.4"
+
 group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
