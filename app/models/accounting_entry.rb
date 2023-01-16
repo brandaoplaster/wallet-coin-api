@@ -1,5 +1,6 @@
 class AccountingEntry < ApplicationRecord
   belongs_to :user
+  belongs_to :category
 
   validates :value, :release_date, presence: true
 
