@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_160710) do
+ActiveRecord::Schema.define(version: 2023_01_16_010851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_160710) do
     t.integer "type_accounting_entry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_accounting_entries_on_category_id"
     t.index ["user_id"], name: "index_accounting_entries_on_user_id"
   end
 
@@ -29,6 +31,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_160710) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tag_id", null: false
+    t.index ["tag_id"], name: "index_categories_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -62,5 +66,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_160710) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "accounting_entries", "categories"
   add_foreign_key "accounting_entries", "users"
+  add_foreign_key "categories", "tags"
 end
