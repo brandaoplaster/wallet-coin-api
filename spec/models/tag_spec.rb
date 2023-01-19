@@ -1,5 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "validating relationships" do
+    it { is_expected.to have_many(:categories) }
+  end
+
+  context "validate presence of fields" do
+    it { is_expected.to validate_presence_of(:name) }
+
+    context "field validate uniqueness of title" do
+      subject { FactoryBot.build(:tag) }
+
+      it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
+    end
+  end
 end
