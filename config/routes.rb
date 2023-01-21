@@ -1,4 +1,9 @@
+require "api_version_constraint"
+
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth/v1/user'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api, defaults: { format: :json } do
+    namespace :v1, contraints: ApiVersionConstraint.new(version: 1, default: true) do
+      mount_devise_token_auth_for "User", at: "auth/user"
+    end
+  end
 end
