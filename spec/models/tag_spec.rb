@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Tag, type: :model do
   context "validating relationships" do
-    it { is_expected.to have_many(:categories) }
+    it { is_expected.to belong_to(:category) }
   end
 
   context "validate presence of fields" do
